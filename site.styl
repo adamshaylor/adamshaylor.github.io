@@ -23,6 +23,12 @@ html
     opacity 1
 
 html,
+body
+  // http://stackoverflow.com/a/13645522/293656
+  position relative
+  overflow hidden
+
+html,
 table
   line-height 2em
 
@@ -101,6 +107,9 @@ sub
   top -0.4em
   &sub
     top 0.4em
+
+#smooth-state-container
+  overflow hidden
 
 .page
   box-sizing border-box
