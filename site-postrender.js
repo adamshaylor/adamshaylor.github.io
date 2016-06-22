@@ -35,6 +35,7 @@ $(function sitePostrender() {
         breakpointChangeHandler(breakpointName);
       });
       if (mediaQueryList.matches) {
+
         breakpointChangeHandler(breakpointName);
       }
     });
@@ -49,7 +50,7 @@ $(function sitePostrender() {
     });
 
     $('body')
-      .removeClass(allClassNames)
+      .removeClass(allClassNames.join(' '))
       .addClass('breakpoint-' + breakpointName);
 
   }
