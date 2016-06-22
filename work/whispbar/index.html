@@ -1,0 +1,123 @@
+<html lang="en" class="no-js"><head><title>Adam Shaylor: Whispbar</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, shrink-to-fit=no"/><meta name="keywords" content="designer, developer, software engineer, polymath, portland oregon"/><meta name="description" content="Software designer and engineer. Portland, Oregon."/><meta name="robots" content="index,follow"/><meta name="googlebot" content="index,follow"/><meta name="google" content="nositelinkssearchbox"/><meta name="twitter:card" content="summary"/><meta name="twitter:site" content="@adamshaylor"/><meta name="twitter:title" content="Adam Shaylor"/><meta name="twitter:description" content="Software designer and engineer. Portland, Oregon."/><meta name="twitter:image" content="http://adamshaylor.com/favicon-180x180.png"/><link rel="icon" type="image/png" href="/favicon-180x180.png" size="180x180"/><link rel="icon" type="image/png" href="/favicon-96x96.png" size="96x96"/><link rel="icon" type="image/png" href="/favicon-32x32.png" size="32x32"/><link rel="icon" type="image/png" href="/favicon-16x16.png" size="16x16"/><link rel="stylesheet" href="/site.css"/><script src="//cdnjs.cloudflare.com/ajax/libs/webfont/1.6.24/webfontloader.js"></script><script src="https://code.jquery.com/jquery-2.2.3.min.js"></script><script src="/site-prerender.js"></script></head><body class="colors-work-whispbar"><div id="smooth-state-container"><div class="page page-work-whispbar"><div class="grid"><header class="project-header"><a href="/" class="project-back-link"><span class="project-back-link-arrows"><svg viewBox="0 0 10 5" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <polygon class="icon arrow-up" fill="#000000" transform="translate(5.235776, 2.341195) rotate(-90.000000) translate(-5.235776, -2.341195)" points="2.96343989 -0.109399546 5.44817067 2.3571951 2.96343989 4.7833088 2.98066055 6.87704466 7.50811197 2.3571951 2.96343989 -2.19465524"></polygon>
+</svg>
+<svg viewBox="0 0 10 5" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <polygon class="icon arrow-up" fill="#000000" transform="translate(5.235776, 2.341195) rotate(-90.000000) translate(-5.235776, -2.341195)" points="2.96343989 -0.109399546 5.44817067 2.3571951 2.96343989 4.7833088 2.98066055 6.87704466 7.50811197 2.3571951 2.96343989 -2.19465524"></polygon>
+</svg>
+</span><span class="project-back-link-text">Adam Shaylor</span></a><section class="project-header-intro"><h1 class="project-header-intro-heading">Whispbar retail experiences</h1><ul class="project-header-intro-contributions"><li class="project-header-intro-contribution">57" touchscreen diorama development</li><li class="project-header-intro-contribution">fit guide development</li><li class="project-header-intro-contribution">visual prototypes</li></ul><p class="project-header-intro-copy">Yakima came to Pollinate in the summer of 2012 for help promoting Whispbar as their premium brand at the upcoming Outdoor Retailer trade show and at REI sales across the country. It was my first major assignment at Pollinate. Though it’s several years old now, it’s still my favorite. Our solutions included a 57" touchscreen diorama experience to show off Whispbar’s design and an iPad app to assist Yakima representatives in walking customers through the fit process.</p></section></header><section class="project-section"><h2 class="project-section-heading">57-inch touchscreen diorama</h2><section class="project-subsection"><div class="project-subsection-copy"><p>The challenge of the touchscreen project was balancing the quality of the experience with the performance of the browser. We had hoped that HTML5 video would be the vehicle for that balance. We could get the benefit of realistic assets pre-rendered by a server farm as well as off-the-shelf video editing tools for tweaking resolution, frame rate and compression.</p><p>Unfortunately, laying interactive elements on top of video proved problematic. Our next best option was to use still renderings and “flip” between them like a flipbook. I created a prototype to prove the technology could work and to demonstrate to Yakima what the experience of interacting with touchpoints in a rotating diorama would be like. In spite of its visual roughness, they were sold on the concept. To make things interesting, we also convinced them to use a 57" touchscreen computer built by InFocus—another client of ours.</p></div><figure class="project-subsection-media"><div class="project-subsection-media-content"><video src="http://res.cloudinary.com/adam-shaylor/video/upload/c_scale,w_640,vc_h264/v1465419199/portfolio-whispbar-demo-video.mov" poster="http://res.cloudinary.com/adam-shaylor/video/upload/c_scale,w_640/v1465419199/portfolio-whispbar-demo-video.jpg" controls="controls"></video></div><figcaption class="project-subsection-media-caption">Whispbar’s finished diorama. The scrubber is augmented by interactive touchpoints.</figcaption></figure></section><section class="project-subsection"><div class="project-subsection-copy"><p>Cardboard Castle did a fantastic job producing the still frame assets. They also produced nearly identical sets of stills for each touchpoint state. By producing those touchpoints within the 3D rendering rather than as flat DOM elements, we were able to deliver a much more integrated experience. After I wired a scrubber up to the still frames, I designed a JSON data structure to map the X/Y coordinates of the touchpoints to each frame.</p><p>It didn’t take long for us to realize that entering this data by hand was going to eat a lot of project time. When Cardboard Castle revised the stills our coordinate data was invalidated. We needed a GUI to manage the data or we would blow the deadline. So I built it. The tool was accessible from the console. It walked through each still, collecting clicks and converting them into JSON output. This bought back the time we needed to fix the remaining bugs and polish the experience.</p><p>The last hurdle came the morning of the trade show. There was a problem with the scrubber. Nothing had changed in our code. I narrowed it down to a delegated event binding but couldn’t figure out why it worked one day and not the next. I tried changing the binding from the <code>window</code> to the <code>document</code> element and the bug mysteriously disappeared.</p></div><figure class="project-subsection-media"><div class="project-subsection-media-content"><img src="http://res.cloudinary.com/adam-shaylor/image/upload/c_fill,h_360,w_640/v1465422117/portfolio-whispbar-yakima-booth.jpg"/></div><figcaption class="project-subsection-media-caption">Yakima and Whispbar booths at the Outdoor Retailer trade show.</figcaption></figure></section><section class="project-subsection"><div class="project-subsection-copy"><p>It was only then that it occurred to me that there could be an underlying bug in the browser. As it turned out, there was. Chrome had updated itself the morning of the trade show and <a href="https://bugs.chromium.org/p/chromium/issues/detail?id=140473">a regression relating to event bindings</a> reared its head at exactly the wrong time. We were offline for a couple of hours but managed to fix it just before the press event. We found a flag to set to prevent future updates and the rest of the show went off without a hitch.</p><p>Since the completion of this project I’ve worked on projects where base64 encoded raster images are drawn to a <code>canvas</code> element. It’s much faster than DOM-based rendering. A canvas approach would have also used a smaller memory footprint and may have made more fine-grained memory management possible.</p><p>In spite of the ways I might do this project differently, we made Yakima pretty happy. We proved to them, our other clients, and to ourselves that we could use the web as a medium for building interactive experiences beyond the conventional notions of a website.</p></div><figure class="project-subsection-media"><div class="project-subsection-media-content"><img src="http://res.cloudinary.com/adam-shaylor/image/upload/c_fill,h_360,w_640/v1465421751/portfolio-whispbar-in-booth.jpg"/></div><figcaption class="project-subsection-media-caption">Yakima continued to use the touchscreen diorama at other events to promote their Whispbar line.</figcaption></figure></section></section><section class="project-section"><h2 class="project-section-heading">Credits</h2><ul class="un-bullet"><li><a href="https://www.linkedin.com/in/bob-vandehey-04857710">Bob Vandehey</a>, creative direction</li><li><a href="http://www.steviespencer.com">Stevie Spencer</a>, iPad app design</li><li><a href="http://www.cardboardcastle.com">Cardboard Castle</a>, diorama 3D renderings</li></ul></section></div></div></div><script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/smoothState.js/0.7.2/jquery.smoothState.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.4/TweenLite.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TimelineLite.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.4/plugins/CSSPlugin.min.js"></script><script>window.shaylor = window.shaylor || {};
+window.shaylor.design ={
+  "layout": {
+    "gridAspectRatio": {
+      "numerator": 16,
+      "denominator": 9
+    },
+    "breakpoints": {
+      "small": {
+        "minWidthPx": null,
+        "maxWidthPx": 959,
+        "columnCount": 12,
+        "columnToGutterRatio": 1.6,
+        "rowCount": 24,
+        "forceFitAspectRatio": false,
+        "typeScale": {
+          "unit": "rem",
+          "ratio": 1.667,
+          "bases": [
+            1.8,
+            2
+          ]
+        }
+      },
+      "medium": {
+        "minWidthPx": 960,
+        "maxWidthPx": 1439,
+        "columnCount": 19,
+        "columnToGutterRatio": 1.6,
+        "rowCount": 46,
+        "forceFitAspectRatio": true,
+        "typeScale": {
+          "unit": "rem",
+          "ratio": 1.778,
+          "bases": [
+            1,
+            1.2
+          ]
+        }
+      },
+      "large": {
+        "minWidthPx": 1440,
+        "maxWidthPx": null,
+        "columnCount": 24,
+        "columnToGutterRatio": 1.6,
+        "rowCount": 58,
+        "forceFitAspectRatio": true,
+        "typeScale": {
+          "unit": "rem",
+          "ratio": 1.778,
+          "bases": [
+            1,
+            1.2
+          ]
+        }
+      }
+    }
+  },
+  "pages": {
+    "home": {
+      "colors": {
+        "lightPrimary": "#fbfbfd",
+        "darkPrimary": "#121435",
+        "darkSecondary": "#090916",
+        "neutralPrimary": "#9396bf",
+        "strongPrimary": "#dc347f",
+        "strongSecondary": "#5915f6"
+      }
+    },
+    "work-whispbar": {
+      "colors": {
+        "lightPrimary": "#fcfcfc",
+        "darkPrimary": "#020202",
+        "darkSecondary": "#1c1c1c",
+        "neutralPrimary": "#a4a4a4",
+        "strongPrimary": "#6390c9",
+        "strongSecondary": "#ab7eb7"
+      }
+    },
+    "work-polymath-interviews": {
+      "colors": {
+        "lightPrimary": "#ffebab",
+        "darkPrimary": "#7e5233",
+        "darkSecondary": "#5e7a87",
+        "neutralPrimary": "#5e7a87",
+        "strongPrimary": "#f45d00",
+        "strongSecondary": "#5e7a87"
+      }
+    },
+    "work-pollinate-customizer": {
+      "colors": {
+        "lightPrimary": "#f1f8f9",
+        "darkPrimary": "#000000",
+        "darkSecondary": "#3c3b3a",
+        "neutralPrimary": "#989898",
+        "strongPrimary": "#ec1200",
+        "strongSecondary": "#079fac"
+      }
+    }
+  },
+  "animationDefaults": {
+    "timingFunctions": {
+      "css": "cubic-bezier(0.62, 0.28, 0.23, 0.99)",
+      "gsap": ["Power1", "easeInOut"]
+    },
+    "durationsInSeconds": {
+      "shorter": 0.1,
+      "short": 0.2,
+      "mediumShort": 0.6,
+      "medium": 0.8,
+      "mediumLong": 1.0,
+      "long": 2.0
+    }
+  },
+  "defaultShadow": "rgba(0, 0, 0, 0.08) 0.5rem 0.5rem 0"
+}
+;</script><script src="/shared/querify-breakpoint.js"></script><script src="/site-postrender.js"></script></body></html>

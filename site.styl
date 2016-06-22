@@ -1,0 +1,325 @@
+@require 'src/design'
+
+html,
+body,
+h1,
+h2,
+h3,
+p,
+figure,
+blockquote,
+ul,
+table
+  margin 0
+
+html
+  font-family 'Source Sans Pro', 'Lucida Grande', 'Trebuchet MS', sans-serif
+  -webkit-tap-highlight-color rgba(0, 0, 0, 0)
+  &.wf-loading body
+    opacity 0
+  &.no-js body,
+  &.wf-active body,
+  &.wf-inactive body
+    opacity 1
+
+html,
+table
+  line-height 2em
+
+body,
+a,
+h2,
+h3,
+.email,
+.elsewhere,
+.elsewhere-heading,
+.elsewhere-link,
+.elsewhere-highlight,
+.project-back-link
+  transition opacity $defaultTiming $medium, color linear $medium, background-color linear $medium, border-color linear $medium
+
+.home-project-heading
+  transition border-color linear $shorter
+
+.project-back-link:hover
+  transition background-color linear $shorter
+
+h1
+  transition color linear $shorter
+
+body
+  overflow hidden
+  @media print
+    overflow-y visible
+
+svg,
+svg .icon
+  transition fill $defaultTiming $medium
+
+h1
+  letter-spacing -0.05em
+
+p,
+figure,
+ul,
+table
+  margin-bottom 1rem
+
+a
+  text-decoration none
+  &:hover, &:active
+    text-decoration underline
+
+blockquote
+  text-indent -0.5em
+  font-weight bold
+
+table
+  border-collapse collapse
+  font-size 1em
+
+h2
+  & + p,
+  & + figure,
+  & + ul,
+  & + table
+    margin-top 1.2rem
+
+p + h2,
+figure + h2
+  margin-top 2.75rem
+
+code
+  border-radius 0.2em
+  padding 0.2em 0.3em
+
+// https://css-tricks.com/snippets/css/prevent-superscripts-and-subscripts-from-affecting-line-height/
+sup,
+sub
+  vertical-align baseline
+  position relative
+  top -0.4em
+  &sub
+    top 0.4em
+
+.page
+  box-sizing border-box
+  position absolute
+  top 0
+  left 0
+  width 100vw
+  height 100vh
+  overflow-y scroll
+  -webkit-overflow-scrolling: touch;
+  @media print
+    overflow-y visible
+
+.grid
+  @extend .center-block
+  position relative
+  width 100vw
+  min-height 100vh
+
+.contact
+  @extend .flush-right
+
+.elsewhere
+  box-sizing border-box
+  border-style solid
+
+.elsewhere-heading
+  margin-top 0.7rem
+  margin-bottom 1.9rem
+  text-transform uppercase
+  letter-spacing 0.2em
+
+.elsewhere-list
+  @extend .un-bullet
+
+for $breakpointName, $breakpoint in $breakpoints
+  $queryBreakpoint = querifyBreakpoint($breakpoint)
+  $rem = 100vw / ($gridAspectRatioNumber * $breakpoint.rowCount)
+  @media $queryBreakpoint
+    html
+      font-size $rem
+    body
+      font-size scaleType($breakpoint, 0)
+    .{$breakpointName}-pad-one-column
+      padding-left columnsAndGutters($breakpoint, 1, 0)
+      padding-right columnsAndGutters($breakpoint, 1, 0)
+    .{$breakpointName}-pad-one-gutter
+      padding-left columnsAndGutters($breakpoint, 0, 1)
+      padding-right columnsAndGutters($breakpoint, 0, 1)
+    .elsewhere-heading,
+    .elsewhere-text
+      font-size scaleType($breakpoint, 1)
+    .contact
+      position relative
+      & > *
+        box-sizing border-box
+        padding-top 3.3rem
+        padding-bottom 3.3rem
+    .email
+      display block
+      position absolute
+      width 100%
+      height 100%
+    .email-text
+      font-size scaleType($breakpoint, 4)
+      font-weight bold
+      line-height 1.3em
+      text-decoration underline
+    if $breakpointName is 'large' or $breakpointName is 'medium'
+      h1
+        font-size scaleType($breakpoint, 6)
+        line-height scaleType($breakpoint, 6)
+      h2
+        font-size scaleType($breakpoint, 2)
+        line-height scaleType($breakpoint, 3)
+      .page
+        padding-bottom 8rem
+      .contact
+        right columnsAndGutters($breakpoint, 0, 1)
+        width columnsAndGutters($breakpoint, 6, 6)
+        margin-left columnsAndGutters($breakpoint, 1, 2)
+        box-shadow $defaultShadow
+        & > *
+          padding-left columnsAndGutters($breakpoint, 0, 1)
+          padding-right columnsAndGutters($breakpoint, 1, 1)
+      .email
+        top calc(-100% - 1rem)
+        box-shadow $defaultShadow
+      .elsewhere
+        border-width 2rem
+    if $breakpointName is 'medium'
+      .contact
+        margin-top 36rem
+    if $breakpointName is 'small'
+      html
+        line-height 3em
+      h2
+        font-size inherit
+        text-transform uppercase
+      p
+        margin-bottom 2rem
+      p + h2,
+      figure + h2
+        margin-top 6rem
+      .contact
+        margin-top 47rem
+      .email
+        top -100%
+        padding-left columnsAndGutters($breakpoint, 1, 2)
+        padding-right columnsAndGutters($breakpoint, 1, 2)
+      .elsewhere
+        border-width columnsAndGutters($breakpoint, 0, 1)
+        padding-left columnsAndGutters($breakpoint, 1, 1)
+        padding-right columnsAndGutters($breakpoint, 1, 1)
+    if $breakpoint.forceFitAspectRatio
+      $queryViewportWiderThanGrid = '(min-aspect-ratio: %s)' % $gridAspectRatioString
+      $rem = 100vh / $breakpoint.rowCount
+      $alternateGridWidth = 100vh * $gridAspectRatioNumber
+      @media $queryViewportWiderThanGrid
+        html
+          font-size $rem
+        .grid
+          width $alternateGridWidth
+
+for $pageName, $pageData in $pages
+  $colorsAreInverted = light($pageData.colors.darkPrimary)
+  $smallQuery = querifyBreakpoint($breakpoints.small)
+  .colors-{$pageName}
+    color: $pageData.colors.darkPrimary
+    background-color: $pageData.colors.lightPrimary
+    a
+      color: $pageData.colors.strongPrimary
+    h2
+      color: $pageData.colors.neutralPrimary
+    code
+      background-color: alpha($pageData.colors.neutralPrimary, 30%)
+    ::selection
+      background-color: alpha($pageData.colors.strongSecondary, 20%)
+    .home-project-caption
+      if ($colorsAreInverted)
+        color: darken($pageData.colors.neutralPrimary, 50%)
+      else
+        color: lighten($pageData.colors.neutralPrimary, 50%)
+    .home-project-heading
+      border-color: $pageData.colors.strongPrimary
+      &:active
+        if ($colorsAreInverted)
+          border-color: $pageData.colors.strongSecondary
+        else
+          border-color: $pageData.colors.strongSecondary
+        @media $smallQuery
+          .home-project-link
+            if ($colorsAreInverted)
+              color: $pageData.colors.strongSecondary !important
+            else
+              color: $pageData.colors.strongSecondary !important
+            .icon
+              if ($colorsAreInverted)
+                fill: $pageData.colors.strongSecondary
+              else
+                fill: $pageData.colors.strongSecondary
+    .home-project-link
+      color: $pageData.colors.neutralPrimary
+      @media $smallQuery
+        color: $pageData.colors.strongPrimary !important
+    .home-project:hover:not(.home-project-selected) .home-project-link
+      if ($colorsAreInverted)
+        color: darken($pageData.colors.neutralPrimary, 50%)
+      else
+        color: lighten($pageData.colors.neutralPrimary, 50%)
+    .home-project-selected .home-project-link
+      color: $pageData.colors.strongPrimary
+    .home-project-link,
+    .home-project-button
+      .icon
+        fill: $pageData.colors.strongPrimary
+    .email
+      if ($colorsAreInverted)
+        background-color: darken($pageData.colors.strongPrimary, 10%)
+        &:hover
+          background-color: darken($pageData.colors.strongSecondary, 10%)
+      else
+        background-color: lighten($pageData.colors.strongPrimary, 10%)
+        &:hover
+          background-color: lighten($pageData.colors.strongSecondary, 10%)
+    .email-text
+      color: $pageData.colors.lightPrimary
+    .elsewhere
+      if ($colorsAreInverted)
+        border-color: lighten($pageData.colors.lightPrimary, 3.5%)
+      else
+        border-color: darken($pageData.colors.lightPrimary, 3.5%)
+    .elsewhere-heading
+      color: $pageData.colors.neutralPrimary
+    .elsewhere-link
+      if ($colorsAreInverted)
+        color: darken($pageData.colors.darkPrimary, 30%)
+      else
+        color: lighten($pageData.colors.darkPrimary, 30%)
+    .elsewhere-highlight
+      color: $pageData.colors.strongPrimary
+    .project-back-link
+      background-color: $pageData.colors.strongPrimary
+      color: $pageData.colors.lightPrimary
+      &:hover
+        if ($colorsAreInverted)
+          background-color: saturate(darken($pageData.colors.strongPrimary, 30%), 50%)
+        else
+          background-color: saturate(lighten($pageData.colors.strongPrimary, 30%), 50%)
+    .project-back-link-arrows
+      .icon
+        fill: $pageData.colors.lightPrimary
+    .project-header-intro-heading
+      color: desaturate(darken($pageData.colors.strongSecondary, 30%), 70%)
+    .project-section
+      border-color: alpha($pageData.colors.neutralPrimary, 50%)
+
+// The site is being rendered as a SPA with animated transitions between pages,
+// so combine all the page styling into a single file
+@require 'src/pages/home'
+@require 'src/pages/project'
+@require 'src/pages/work/polymath-interviews/polymath-interviews'

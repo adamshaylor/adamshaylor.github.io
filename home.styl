@@ -1,0 +1,215 @@
+@require 'src/design'
+
+.home-quote
+  font-weight bold
+
+.home-values-table
+  @extend .center-block
+
+.home-project
+  position relative
+
+.home-project:not(.home-project-selected)
+  cursor pointer
+
+.home-project-image
+  background-position-x 50%
+  background-position-y 50%
+  background-size cover
+  background-repeat no-repeat
+
+.home-project-image-whispbar
+  background-image url(/images/home-projects-whispbar.png)
+
+.home-project-image-polymath-interviews
+  background-image url(/images/home-projects-polymath.png)
+
+.home-project-image-pollinate-customizer
+  background-image url(/images/home-projects-customizer.png)
+
+.home-project-contributions
+  @extend .un-bullet
+
+for $breakpointName, $breakpoint in $breakpoints
+  $queryBreakpoint = querifyBreakpoint($breakpoint)
+  @media $queryBreakpoint
+    .home-header
+      margin-left columnsAndGutters($breakpoint, 1, 2)
+    .home-explanatory
+      margin-left columnsAndGutters($breakpoint, 1, 2)
+    if $breakpointName is 'large' or $breakpointName is 'medium'
+      .home-header
+        margin-top 5.25rem
+        margin-bottom 3.8rem
+      .home-header-greeting
+        margin-left -0.06em
+      .home-header-intro
+        margin-top 0.7rem
+        font-size scaleType($breakpoint, 1)
+      .home-projects
+        position absolute
+        top 6.8rem
+        right columnsAndGutters($breakpoint, 1, 2)
+        width columnsAndGutters($breakpoint, 10, 9)
+      .home-project
+        width columnsAndGutters($breakpoint, 10, 10)
+        height 23rem
+        overflow-y hidden
+      .home-project-image
+        position absolute
+        top 0
+        left 0
+        width columnsAndGutters($breakpoint, 10, 9)
+        height 23rem
+        pointer-events none
+      .home-project-caption
+        position absolute
+        left columnsAndGutters($breakpoint, 1, 0)
+        bottom 1.4rem
+      .home-project-heading
+        font-size scaleType($breakpoint, 1)
+      .home-project-selected
+        .home-project-link-arrow
+          opacity 0
+      .home-project-contributions
+        margin 0
+      .home-project-link-arrow svg
+        height 0.5rem
+        position absolute
+        top 0.8rem
+        left -1.7rem
+      .home-project-button
+        display block
+        position absolute
+        top 9rem
+        right 0
+        width 5rem
+        height 5rem
+        transform rotate(90deg)
+        svg
+          position absolute
+          top 1.8rem
+          right 1.5rem
+          width 2rem
+          transition top $short $defaultTiming
+          &:nth-child(2)
+            top 1.1rem
+        &.home-project-button-indicate svg:nth-child(2)
+          top 0.7rem
+      .home-explanatory
+        margin-bottom 2.75rem
+      $gridWidth = gridWidth($breakpoint)
+      body.fixed-home-projects .home-projects
+        position fixed
+        top 12rem
+        right 'calc((100vw - %s) / 2 + %s)' % ($gridWidth columnsAndGutters($breakpoint, 1, 2))
+    if $breakpointName is 'large'
+      .home-header
+        width columnsAndGutters($breakpoint, 11, 10)
+      .home-explanatory
+        display flex
+        width columnsAndGutters($breakpoint, 11, 10)
+        hyphens auto
+      .home-explanatory-column
+        width columnsAndGutters($breakpoint, 5, 4)
+        margin-bottom 33.2rem
+        &:last-child
+          margin-left columnsAndGutters($breakpoint, 1, 2)
+    if $breakpointName is 'medium'
+      .home-header
+        width columnsAndGutters($breakpoint, 6, 5)
+      .home-explanatory
+        width columnsAndGutters($breakpoint, 6, 5)
+      .home-explanatory-column
+        width 100%
+    if $breakpointName is 'small'
+      .home-header,
+      .home-explanatory
+        width columnsAndGutters($breakpoint, 10, 9)
+      .home-project,
+      .home-project-image
+        width 100%
+        height 100%
+      .home-header
+        margin-top 9.8rem
+        font-size scaleType($breakpoint, 4)
+        line-height 6.9rem
+      .home-header-greeting,
+      .home-header-intro-sentence
+        margin-bottom 0.65em
+      .home-header-greeting
+        font-size inherit
+        letter-spacing inherit
+        line-height inherit
+      .home-header-intro
+        line-height inherit
+      .home-header-intro-sentence
+        display block
+      .home-explanatory
+        margin-top 6.5rem
+      .home-explanatory-column
+        margin-top 5rem
+      .home-recommendation
+        margin-top 3rem
+        margin-bottom 3rem
+        text-align center
+      .home-recommendation-quote
+        text-indent 0
+      .home-projects
+        margin-top 16.5rem
+        padding-top 4rem
+        width 100%
+        overflow hidden
+      .home-project
+        width 100%
+        height 33rem !important
+        margin-top 6.2rem
+      .home-project-image
+        background-size 115%
+      .home-project-button
+        display none
+      .home-project-caption
+        position absolute
+        top 0
+        left 0
+        width 100%
+        height 100%
+      .home-project-heading,
+      .home-project-contributions
+        position absolute
+        left 0
+        padding-left columnsAndGutters($breakpoint, 0, 1)
+      .home-project-heading
+        top -8.9rem
+        width 100%
+        height 5rem
+        padding-top 1rem
+        padding-bottom 5rem
+        border-top solid 1rem
+        // Sampled from home project images
+        background-color #090A1A
+      .home-project-link,
+      .home-project-link-arrow,
+      .home-project-link-text
+        display block
+      .home-project-link
+        position relative
+        text-decoration none !important
+      .home-project-link-arrow
+        position absolute
+        top 1.1rem
+        right columnsAndGutters($breakpoint, 0, 1)
+        height 0.5rem
+        transform rotate(90deg)
+        height 1px
+        vertical-align middle
+        & > svg
+          height 1rem
+      .home-project-contributions
+        position absolute
+        bottom 3.3rem
+    html.js
+      .home-project
+        margin-bottom 0
+      .home-project:not(.home-project-selected) .home-project-link
+        text-decoration none

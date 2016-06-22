@@ -1,0 +1,115 @@
+{
+  "layout": {
+    "gridAspectRatio": {
+      "numerator": 16,
+      "denominator": 9
+    },
+    "breakpoints": {
+      "small": {
+        "minWidthPx": null,
+        "maxWidthPx": 959,
+        "columnCount": 12,
+        "columnToGutterRatio": 1.6,
+        "rowCount": 24,
+        "forceFitAspectRatio": false,
+        "typeScale": {
+          "unit": "rem",
+          "ratio": 1.667,
+          "bases": [
+            1.8,
+            2
+          ]
+        }
+      },
+      "medium": {
+        "minWidthPx": 960,
+        "maxWidthPx": 1439,
+        "columnCount": 19,
+        "columnToGutterRatio": 1.6,
+        "rowCount": 46,
+        "forceFitAspectRatio": true,
+        "typeScale": {
+          "unit": "rem",
+          "ratio": 1.778,
+          "bases": [
+            1,
+            1.2
+          ]
+        }
+      },
+      "large": {
+        "minWidthPx": 1440,
+        "maxWidthPx": null,
+        "columnCount": 24,
+        "columnToGutterRatio": 1.6,
+        "rowCount": 58,
+        "forceFitAspectRatio": true,
+        "typeScale": {
+          "unit": "rem",
+          "ratio": 1.778,
+          "bases": [
+            1,
+            1.2
+          ]
+        }
+      }
+    }
+  },
+  "pages": {
+    "home": {
+      "colors": {
+        "lightPrimary": "#fbfbfd",
+        "darkPrimary": "#121435",
+        "darkSecondary": "#090916",
+        "neutralPrimary": "#9396bf",
+        "strongPrimary": "#dc347f",
+        "strongSecondary": "#5915f6"
+      }
+    },
+    "work-whispbar": {
+      "colors": {
+        "lightPrimary": "#fcfcfc",
+        "darkPrimary": "#020202",
+        "darkSecondary": "#1c1c1c",
+        "neutralPrimary": "#a4a4a4",
+        "strongPrimary": "#6390c9",
+        "strongSecondary": "#ab7eb7"
+      }
+    },
+    "work-polymath-interviews": {
+      "colors": {
+        "lightPrimary": "#ffebab",
+        "darkPrimary": "#7e5233",
+        "darkSecondary": "#5e7a87",
+        "neutralPrimary": "#5e7a87",
+        "strongPrimary": "#f45d00",
+        "strongSecondary": "#5e7a87"
+      }
+    },
+    "work-pollinate-customizer": {
+      "colors": {
+        "lightPrimary": "#f1f8f9",
+        "darkPrimary": "#000000",
+        "darkSecondary": "#3c3b3a",
+        "neutralPrimary": "#989898",
+        "strongPrimary": "#ec1200",
+        "strongSecondary": "#079fac"
+      }
+    }
+  },
+  "animationDefaults": {
+    "timingFunctions": {
+      "css": "cubic-bezier(0.62, 0.28, 0.23, 0.99)",
+      "gsap": ["Power1", "easeInOut"]
+    },
+    "durationsInSeconds": {
+      "shorter": 0.1,
+      "short": 0.2,
+      "mediumShort": 0.6,
+      "medium": 0.8,
+      "mediumLong": 1.0,
+      "long": 2.0
+    }
+  },
+  "defaultShadow": "rgba(0, 0, 0, 0.08) 0.5rem 0.5rem 0"
+}

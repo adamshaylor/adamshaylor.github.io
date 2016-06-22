@@ -1,0 +1,167 @@
+@require 'src/design'
+
+.project-back-link-text
+  font-style italic
+  text-transform lowercase
+
+.project-back-link-arrows
+  svg
+    display inline-block
+    width 1em
+    transform rotate(-90deg)
+    &:nth-child(2)
+      margin-left -0.85em
+
+.project-header-intro-contributions
+  @extend .un-bullet
+  margin-bottom 0
+
+.project-header-intro-contribution
+  display inline
+  font-style italic
+  &:after
+    content ', '
+  &:last-child:after
+    content ''
+
+.project-subsection
+  margin-bottom 1rem
+
+.project-subsection-media-content
+  *
+    box-sizing border-box
+  & > *
+    display block
+    width 100%
+
+.project-subsection-media-caption
+  font-style italic
+
+for $breakpointName, $breakpoint in $breakpoints
+  $queryBreakpoint = querifyBreakpoint($breakpoint)
+  @media $queryBreakpoint
+    if $breakpointName is 'large' or $breakpointName is 'medium'
+      .project-header,
+      .project-section
+        margin auto
+      .project-header
+        display flex
+        margin-bottom 5.7rem
+      .project-back-link
+        display block
+        position relative
+        top -0.5rem
+        width columnsAndGutters($breakpoint, 3, 2)
+        padding-top 7.5rem
+        box-shadow $defaultShadow
+        &:hover
+          text-decoration none
+      .project-back-link-arrows
+        display block
+        margin-bottom 1.75rem
+        font-size scaleType($breakpoint, 5)
+        text-align center
+      .project-back-link-text
+        display block
+        font-size scaleType($breakpoint, 1)
+        text-align center
+        text-decoration underline
+      .project-header-intro
+        box-sizing border-box
+        padding-left columnsAndGutters($breakpoint, 4, 5)
+      .project-header-intro-heading
+        margin-top 6rem
+        margin-bottom 0.1rem
+      .project-header-intro-contributions
+        margin-bottom 2rem
+      .project-header-intro-copy
+        width columnsAndGutters($breakpoint, 10, 9)
+      .project-section
+        margin-bottom 4rem
+        padding-top 1.1rem
+        border-top-style solid
+        border-top-width 2px
+      .project-section-heading
+        margin-bottom 4rem
+        font-size scaleType($breakpoint, 3)
+      .project-subsection
+        display flex
+      .project-subsection-copy,
+      .project-subsection-media
+        margin-top -0.5rem
+      .project-subsection-copy
+        width columnsAndGutters($breakpoint, 6, 5)
+        margin-right columnsAndGutters($breakpoint, 1, 2)
+      .project-subsection-media-content
+        width columnsAndGutters($breakpoint, 10, 9)
+        margin-right columnsAndGutters($breakpoint, 0, 1)
+    if $breakpointName is 'large'
+      .project-header,
+      .project-section
+        width columnsAndGutters($breakpoint, 22, 21)
+      .project-header-intro
+        width columnsAndGutters($breakpoint, 19, 19)
+      .project-header-intro-heading
+        font-size scaleType($breakpoint, 5)
+      .project-subsection-media
+        display flex
+        width columnsAndGutters($breakpoint, 15, 14)
+      .project-subsection-media-caption
+        width columnsAndGutters($breakpoint, 5, 4)
+      .project-subsection-media-wide
+        display block
+        .project-subsection-media-content
+          width 100%
+          margin-right 0
+          margin-bottom 1rem
+        .project-subsection-media-caption
+          width 100%
+    if $breakpointName is 'medium'
+      .project-header,
+      .project-section
+        width columnsAndGutters($breakpoint, 17, 16)
+      .project-header-intro
+        width columnsAndGutters($breakpoint, 14, 14)
+      .project-header-intro-heading
+        font-size scaleType($breakpoint, 4)
+      .project-subsection-media
+        width columnsAndGutters($breakpoint, 10, 9)
+      .project-subsection-media-caption
+        margin-top 1rem
+    if $breakpointName is 'small'
+      .project-back-link
+        display block
+        padding-top 0.5rem
+        padding-bottom 0.5rem
+        padding-left columnsAndGutters($breakpoint, 0, 1)
+        &:hover,
+        &:active
+          text-decoration none
+      .project-header-intro,
+      .project-section
+        width columnsAndGutters($breakpoint, 10, 9)
+        margin auto
+      .project-header-intro
+        margin-top 8.6rem
+      .project-header-intro-contributions
+        margin-top 0.4rem
+      .project-header-intro-copy
+        margin-top 3.2rem
+      .project-section
+        margin-top 5rem
+        &:last-child
+          margin-bottom 8rem
+      .project-section-heading
+        margin-bottom 2rem
+      .project-subsection-media
+        position relative
+        left (-1 * columnsAndGutters($breakpoint, 1, 2))
+        width columnsAndGutters($breakpoint, 12, 13)
+        margin-top 3rem
+        margin-bottom 3rem
+      .project-subsection-media-caption
+        margin-top 1rem
+        padding-left columnsAndGutters($breakpoint, 0, 1)
+        padding-right columnsAndGutters($breakpoint, 0, 1)
+        font-size scaleType($breakpoint, -1)
+        line-height 2rem
