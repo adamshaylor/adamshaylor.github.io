@@ -114,6 +114,11 @@ $(function sitePostrender() {
 
     });
 
+    // Send Google Analytics tracking event
+    if (window.ga) {
+      window.ga('send', 'pageview');
+    }
+
   }
 
   function smoothStateOnAfter($container, $newPage) {
