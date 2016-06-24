@@ -13,7 +13,7 @@ $(function sitePostrender() {
   }
 
   // http://stackoverflow.com/a/33681490/293656
-  $('body *').on('touchstart', function () {});
+  $('body *').on('touchstart', function() {});
 
   var timingFunction = window.shaylor.design.animationDefaults.timingFunctions.gsap;
   TweenLite.defaultEase = com.greensock.easing[timingFunction[0]][timingFunction[1]];
@@ -114,11 +114,6 @@ $(function sitePostrender() {
 
     });
 
-    // Send Google Analytics tracking event
-    if (window.ga) {
-      window.ga('send', 'pageview');
-    }
-
   }
 
   function smoothStateOnAfter($container, $newPage) {
@@ -138,6 +133,12 @@ $(function sitePostrender() {
       .addClass('colors-' + newPageName);
 
     $container.attr('data-current-page', newPageName);
+
+    // Send Google Analytics tracking event
+    if (window.ga) {
+      window.ga('set', 'page', window.location.pathname);
+      window.ga('send', 'pageview');
+    }
 
   }
 
