@@ -37,17 +37,18 @@ body,
 a,
 h2,
 h3,
-.email,
 .elsewhere,
 .elsewhere-heading,
 .elsewhere-link,
 .elsewhere-highlight,
-.project-back-link
+.project-back-link,
+.project-footer
   transition opacity $defaultTiming $medium, color linear $medium, background-color linear $medium, border-color linear $medium
 
 .home-project-heading
   transition border-color linear $shorter
 
+.email,
 .project-back-link:hover
   transition background-color linear $shorter
 
@@ -188,7 +189,8 @@ for $breakpointName, $breakpoint in $breakpoints
         font-size scaleType($breakpoint, 2)
         line-height scaleType($breakpoint, 3)
       .page
-        padding-bottom 8rem
+        // Eliminate gap between project footer and bottom of page
+        height calc(100% + 3rem)
       .contact
         right columnsAndGutters($breakpoint, 0, 1)
         width columnsAndGutters($breakpoint, 6, 6)
@@ -313,7 +315,8 @@ for $pageName, $pageData in $pages
         color: lighten($pageData.colors.darkPrimary, 30%)
     .elsewhere-highlight
       color: $pageData.colors.strongPrimary
-    .project-back-link
+    .project-back-link,
+    .project-footer-back-link-arrows
       background-color: $pageData.colors.strongPrimary
       color: $pageData.colors.lightPrimary
       &:hover
@@ -321,16 +324,23 @@ for $pageName, $pageData in $pages
           background-color: saturate(darken($pageData.colors.strongPrimary, 30%), 50%)
         else
           background-color: saturate(lighten($pageData.colors.strongPrimary, 30%), 50%)
-    .project-back-link-arrows
+    .project-back-link-arrows,
+    .project-footer-back-link-arrows
       .icon
         fill: $pageData.colors.lightPrimary
     .project-header-intro-heading
-      color: desaturate(darken($pageData.colors.strongSecondary, 30%), 70%)
+      if ($colorsAreInverted)
+        color: $pageData.colors.strongPrimary
+      else
+        color: desaturate(darken($pageData.colors.strongSecondary, 60%), 70%)
     .project-section
       border-color: alpha($pageData.colors.neutralPrimary, 50%)
+    .project-footer
+      background-color: alpha($pageData.colors.neutralPrimary, 50%)
 
 // The site is being rendered as a SPA with animated transitions between pages,
 // so combine all the page styling into a single file
 @require 'src/pages/home'
 @require 'src/pages/project'
 @require 'src/pages/work/polymath-interviews/polymath-interviews'
+@require 'src/pages/work/sams-header/sams-header'

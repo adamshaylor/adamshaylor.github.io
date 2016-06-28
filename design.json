@@ -68,32 +68,42 @@
     },
     "work-whispbar": {
       "colors": {
-        "lightPrimary": "#fcfcfc",
+        "lightPrimary": "#ffffff",
         "darkPrimary": "#020202",
         "darkSecondary": "#1c1c1c",
-        "neutralPrimary": "#a4a4a4",
+        "neutralPrimary": "#9f9e9e",
         "strongPrimary": "#6390c9",
         "strongSecondary": "#ab7eb7"
       }
     },
     "work-polymath-interviews": {
       "colors": {
-        "lightPrimary": "#ffebab",
+        "lightPrimary": "#ffeeba",
         "darkPrimary": "#7e5233",
         "darkSecondary": "#5e7a87",
         "neutralPrimary": "#5e7a87",
         "strongPrimary": "#f45d00",
-        "strongSecondary": "#5e7a87"
+        "strongSecondary": "#e2993a"
       }
     },
     "work-pollinate-customizer": {
       "colors": {
-        "lightPrimary": "#f1f8f9",
+        "lightPrimary": "#ebf7f9",
         "darkPrimary": "#000000",
         "darkSecondary": "#3c3b3a",
-        "neutralPrimary": "#989898",
+        "neutralPrimary": "#079fac",
         "strongPrimary": "#ec1200",
         "strongSecondary": "#079fac"
+      }
+    },
+    "work-sams-header": {
+      "colors": {
+        "lightPrimary": "#ffffff",
+        "darkPrimary": "#222222",
+        "darkSecondary": "#424242",
+        "neutralPrimary": "#9b9b9b",
+        "strongPrimary": "#1977d3",
+        "strongSecondary": "#4ca90c"
       }
     }
   },

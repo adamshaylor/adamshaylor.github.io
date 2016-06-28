@@ -12,9 +12,6 @@ body.fixed-home-projects
 .home-quote
   font-weight bold
 
-.home-values-table
-  @extend .center-block
-
 .home-project
   position relative
 
@@ -35,6 +32,9 @@ body.fixed-home-projects
 
 .home-project-image-pollinate-customizer
   background-image url(/images/home-projects-customizer.png)
+
+.home-project-image-sams-header
+  background-image url(/images/home-projects-sams-header.png)
 
 .home-project-contributions
   @extend .un-bullet
@@ -57,7 +57,7 @@ for $breakpointName, $breakpoint in $breakpoints
         font-size scaleType($breakpoint, 1)
       .home-projects
         position absolute
-        top 6.8rem
+        top 12.1rem
         right columnsAndGutters($breakpoint, 1, 2)
         width columnsAndGutters($breakpoint, 10, 9)
       .home-project
@@ -110,9 +110,11 @@ for $breakpointName, $breakpoint in $breakpoints
       $gridWidth = gridWidth($breakpoint)
       body.fixed-home-projects .home-projects
         position fixed
-        top 12rem
+        top 17.3rem
         right 'calc((100vw - %s) / 2 + %s)' % ($gridWidth columnsAndGutters($breakpoint, 1, 2))
     if $breakpointName is 'large'
+      .page-home
+        padding-bottom 8rem
       .home-header
         width columnsAndGutters($breakpoint, 11, 10)
       .home-explanatory
@@ -131,6 +133,7 @@ for $breakpointName, $breakpoint in $breakpoints
         width columnsAndGutters($breakpoint, 6, 5)
       .home-explanatory-column
         width 100%
+        margin-top 2.75rem
     if $breakpointName is 'small'
       .home-header,
       .home-explanatory

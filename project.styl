@@ -4,13 +4,20 @@
   font-style italic
   text-transform lowercase
 
-.project-back-link-arrows
+.project-back-link-arrows,
+.project-footer-back-link-arrows
   svg
     display inline-block
-    width 1em
     transform rotate(-90deg)
-    &:nth-child(2)
-      margin-left -0.85em
+
+.project-back-link-arrows svg
+  width 1em
+  &:nth-child(2)
+    margin-left -0.85em
+
+.project-footer-back-link-arrows
+  display inline-block
+  position relative
 
 .project-header-intro-contributions
   @extend .un-bullet
@@ -33,13 +40,36 @@
   & > *
     display block
     width 100%
+  & > :nth-child(n+2)
+    margin-top 1rem
 
 .project-subsection-media-caption
   font-style italic
 
+.project-footer
+  height 3rem
+  margin-top 8rem
+  margin-left auto
+  margin-right auto
+
+.project-footer-back-link-arrows
+  box-sizing border-box
+  box-shadow $defaultShadow
+
 for $breakpointName, $breakpoint in $breakpoints
   $queryBreakpoint = querifyBreakpoint($breakpoint)
   @media $queryBreakpoint
+    .project-footer-back-link-arrows
+      $circleWidth = columnsAndGutters($breakpoint, 1, 2)
+      width $circleWidth
+      height $circleWidth
+      left columnsAndGutters($breakpoint, 1, 0)
+      bottom ($circleWidth / 2)
+      border-radius ($circleWidth / 2)
+      svg
+        $arrowWidth = columnsAndGutters($breakpoint, 1, 0)
+        width $arrowWidth
+        margin ($arrowWidth / -2.8)
     if $breakpointName is 'large' or $breakpointName is 'medium'
       .project-header,
       .project-section
@@ -65,7 +95,6 @@ for $breakpointName, $breakpoint in $breakpoints
         display block
         font-size scaleType($breakpoint, 1)
         text-align center
-        text-decoration underline
       .project-header-intro
         box-sizing border-box
         padding-left columnsAndGutters($breakpoint, 4, 5)
@@ -97,7 +126,8 @@ for $breakpointName, $breakpoint in $breakpoints
         margin-right columnsAndGutters($breakpoint, 0, 1)
     if $breakpointName is 'large'
       .project-header,
-      .project-section
+      .project-section,
+      .project-footer
         width columnsAndGutters($breakpoint, 22, 21)
       .project-header-intro
         width columnsAndGutters($breakpoint, 19, 19)
@@ -116,9 +146,13 @@ for $breakpointName, $breakpoint in $breakpoints
           margin-bottom 1rem
         .project-subsection-media-caption
           width 100%
+      .project-footer-back-link-arrows
+        padding-top 1.5rem
+        padding-left 1.85rem
     if $breakpointName is 'medium'
       .project-header,
-      .project-section
+      .project-section,
+      .project-footer
         width columnsAndGutters($breakpoint, 17, 16)
       .project-header-intro
         width columnsAndGutters($breakpoint, 14, 14)
@@ -128,6 +162,9 @@ for $breakpointName, $breakpoint in $breakpoints
         width columnsAndGutters($breakpoint, 10, 9)
       .project-subsection-media-caption
         margin-top 1rem
+      .project-footer-back-link-arrows
+        padding-top 1.45rem
+        padding-left 1.9rem
     if $breakpointName is 'small'
       .project-back-link
         display block
@@ -138,9 +175,11 @@ for $breakpointName, $breakpoint in $breakpoints
         &:active
           text-decoration none
       .project-header-intro,
-      .project-section
+      .project-section,
+      .project-footer
         width columnsAndGutters($breakpoint, 10, 9)
-        margin auto
+        margin-left auto
+        margin-right auto
       .project-header-intro
         margin-top 8.6rem
       .project-header-intro-contributions
@@ -165,3 +204,8 @@ for $breakpointName, $breakpoint in $breakpoints
         padding-right columnsAndGutters($breakpoint, 0, 1)
         font-size scaleType($breakpoint, -1)
         line-height 2rem
+      .project-footer
+        visibility hidden
+      // .project-footer-back-link-arrows
+      //   padding-top 0.15rem
+      //   padding-left 1.5rem

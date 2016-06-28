@@ -35,7 +35,6 @@ $(function sitePostrender() {
         breakpointChangeHandler(breakpointName);
       });
       if (mediaQueryList.matches) {
-
         breakpointChangeHandler(breakpointName);
       }
     });
@@ -94,6 +93,8 @@ $(function sitePostrender() {
       transform: 'translateX(0)'
     });
 
+    $('body').addClass('freeze-pages');
+
     newPageAnimation.eventCallback('onComplete', function() {
 
       // Restore coordinate system for fixed position elements
@@ -111,6 +112,8 @@ $(function sitePostrender() {
       // TweenLite converts the responsive viewport units passed to it into
       // unitless transform matrices
       $oldPage.css('transform', 'translateX(' + oldPageDestination + ')');
+
+      $('body').removeClass('freeze-pages');
 
     });
 
