@@ -70,7 +70,9 @@ $(function() {
   }
 
   $('body').on('shaylor-prefetched', function() {
+
     $('body').addClass('home-projects-prefetched');
+
   });
 
   $('body').on('click', '.home-project:not(.home-project-selected)', function() {
@@ -86,7 +88,6 @@ $(function() {
     timeline.add(expand($selectedProject, durations.medium));
 
   });
-
 
   $('body').on('click', 'a.home-project-link, a.home-project-button', function(event) {
 

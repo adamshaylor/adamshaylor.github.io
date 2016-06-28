@@ -63,6 +63,7 @@ $(function sitePostrender() {
     var newPageName = getPageNameFromElement($newPage);
     var oldPageName = $container.attr('data-current-page');
     var $oldPage = $('.page-' + oldPageName);
+    var $iframesInNewPage = $newPage.find('iframe');
     var newPageOrigin;
     var oldPageDestination;
 
@@ -79,25 +80,53 @@ $(function sitePostrender() {
     }
 
     if ($container.find('.page-' + newPageName).length) {
+
       $newPage = $container.find('.page-' + newPageName);
+
     }
 
     else {
+
+      // Prevent jank caused by iframes by temporarily disabling them
+      $iframesInNewPage.each(function() {
+        var $iframe = $(this);
+        $iframe
+          .attr('data-src', $iframe.attr('src'))
+          .attr('src', '');
+      });
+
       TweenLite.to($newPage, 0, {
         transform: 'translateX(' + newPageOrigin + ')'
       });
+
       $newPage.appendTo($container);
+
     }
 
     TweenLite.to($oldPage, pageTransitionDurationS, {
       transform: 'translateX(' + oldPageDestination + ')'
     });
 
+    // var $homeProjects = $('.home-projects');
+
+    // TODO: Fix this to stop the project accordion from jumping vertically
+    // during page transitions
+
+    // var newHomeProjectsTop =
+    //   $('.page-home').scrollTop() +
+    //   $homeProjects.position().top +
+    //   'px';
+    //
+    // if (newPageName !== 'home') {
+    //   if (oldPageName === 'home') {
+    //     $homeProjects.css('top', newHomeProjectsTop);
+    //   }
+    //   $('body').removeClass('fixed-home-projects');
+    // }
+
     var newPageAnimation = TweenLite.to($newPage, pageTransitionDurationS, {
       transform: 'translateX(0)'
     });
-
-    $('body').addClass('freeze-pages');
 
     newPageAnimation.eventCallback('onComplete', function() {
 
@@ -108,16 +137,22 @@ $(function sitePostrender() {
       // element are rendered incorrectly
       if (newPageName === 'home') {
         $('body').addClass('fixed-home-projects');
-      }
-      else {
-        $('body').removeClass('fixed-home-projects');
+        // TODO: see above re: jumping
+        // // Restore stylesheet's value
+        // $homeProjects.css('top', '');
       }
 
       // TweenLite converts the responsive viewport units passed to it into
       // unitless transform matrices
       $oldPage.css('transform', 'translateX(' + oldPageDestination + ')');
 
-      $('body').removeClass('freeze-pages');
+      // Re-enable iframes
+      $iframesInNewPage.each(function() {
+        var $iframe = $(this);
+        $iframe
+          .attr('src', $iframe.attr('data-src'))
+          .attr('data-src', '');
+      });
 
     });
 
