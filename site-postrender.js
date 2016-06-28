@@ -19,6 +19,8 @@ $(function sitePostrender() {
   TweenLite.defaultEase = com.greensock.easing[timingFunction[0]][timingFunction[1]];
 
   $container.smoothState({
+    anchors: 'a',
+    prefetch: true,
     onReady: {
       duration: pageTransitionDurationMs,
       render: smoothStateOnReadyRenderer
@@ -39,6 +41,8 @@ $(function sitePostrender() {
       }
     });
   }
+
+  triggerPrefetch(document.body);
 
   function breakpointChangeHandler(breakpointName) {
 
@@ -143,6 +147,8 @@ $(function sitePostrender() {
       window.ga('send', 'pageview');
     }
 
+    triggerPrefetch($newPage.get(0));
+
   }
 
   function getPageNameFromElement(element) {
@@ -150,6 +156,24 @@ $(function sitePostrender() {
     var pageClassRegExp = new RegExp(pageClassPrefixRegExp.source + '.*');
     var pageNameClass = $(element).attr('class').match(pageClassRegExp)[0];
     return pageNameClass.replace(pageClassPrefixRegExp, '');
+  }
+
+  function triggerPrefetch(element) {
+
+    var $localLinks = $(element).find('a[href^="/"]');
+
+    $localLinks.each(function() {
+      var $localLink = $(this);
+      var localHref = $localLink.attr('href');
+      // Just fetch the HTML to get it cached, don't bother doing anything with it
+      $.get(localHref, function() {
+        $localLinks = $localLinks.not('[href="' + localHref + '"]');
+        if (!$localLinks.length) {
+          $(element).trigger('shaylor-prefetched');
+        }
+      });
+    });
+
   }
 
   if (window.location.search.includes('show-grid')) {

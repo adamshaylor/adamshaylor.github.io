@@ -45,6 +45,14 @@ h3,
 .project-footer
   transition opacity $defaultTiming $medium, color linear $medium, background-color linear $medium, border-color linear $medium
 
+.home-project
+  transition background-color linear $shorter
+  > *
+    transition opacity $defaultTiming $medium
+
+body.home-projects-prefetched .home-project
+  background-color rgba(255, 255, 255, 0)
+
 .home-project-heading
   transition border-color linear $shorter
 
@@ -252,6 +260,8 @@ for $pageName, $pageData in $pages
       background-color: alpha($pageData.colors.neutralPrimary, 30%)
     ::selection
       background-color: alpha($pageData.colors.strongSecondary, 20%)
+    .home-project
+      background-color: alpha($pageData.colors.neutralPrimary, 10%)
     .home-project-caption
       if ($colorsAreInverted)
         color: darken($pageData.colors.neutralPrimary, 50%)

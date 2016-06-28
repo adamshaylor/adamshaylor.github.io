@@ -47,9 +47,6 @@ for $breakpointName, $breakpoint in $breakpoints
     .home-explanatory
       margin-left columnsAndGutters($breakpoint, 1, 2)
     if $breakpointName is 'large' or $breakpointName is 'medium'
-      .home-header
-        margin-top 5.25rem
-        margin-bottom 3.8rem
       .home-header-greeting
         margin-left -0.06em
       .home-header-intro
@@ -57,7 +54,6 @@ for $breakpointName, $breakpoint in $breakpoints
         font-size scaleType($breakpoint, 1)
       .home-projects
         position absolute
-        top 12.1rem
         right columnsAndGutters($breakpoint, 1, 2)
         width columnsAndGutters($breakpoint, 10, 9)
       .home-project
@@ -117,6 +113,8 @@ for $breakpointName, $breakpoint in $breakpoints
         padding-bottom 8rem
       .home-header
         width columnsAndGutters($breakpoint, 11, 10)
+        margin-top 5.25rem
+        margin-bottom 3.8rem
       .home-explanatory
         display flex
         width columnsAndGutters($breakpoint, 11, 10)
@@ -126,14 +124,22 @@ for $breakpointName, $breakpoint in $breakpoints
         margin-bottom 33.2rem
         &:last-child
           margin-left columnsAndGutters($breakpoint, 1, 2)
+      .home-projects
+        top 12.1rem
     if $breakpointName is 'medium'
+      .page-home
+        padding-bottom 8rem
       .home-header
         width columnsAndGutters($breakpoint, 6, 5)
+        margin-top 4.25rem
+        margin-bottom 2.8rem
       .home-explanatory
         width columnsAndGutters($breakpoint, 6, 5)
       .home-explanatory-column
         width 100%
         margin-top 2.75rem
+      .home-projects
+        top 13.1rem
     if $breakpointName is 'small'
       .home-header,
       .home-explanatory
@@ -223,5 +229,9 @@ for $breakpointName, $breakpoint in $breakpoints
     html.js
       .home-project
         margin-bottom 0
+        & > *
+          opacity 0
       .home-project:not(.home-project-selected) .home-project-link
         text-decoration none
+      body.home-projects-prefetched .home-project > *
+        opacity 1

@@ -69,6 +69,10 @@ $(function() {
 
   }
 
+  $('body').on('shaylor-prefetched', function() {
+    $('body').addClass('home-projects-prefetched');
+  });
+
   $('body').on('click', '.home-project:not(.home-project-selected)', function() {
 
     var $clickedProject = $(this);
