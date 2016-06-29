@@ -23,7 +23,7 @@
       },
       "medium": {
         "minWidthPx": 960,
-        "maxWidthPx": 1439,
+        "maxWidthPx": 1199,
         "columnCount": 19,
         "columnToGutterRatio": 1.6,
         "rowCount": 46,
@@ -38,7 +38,7 @@
         }
       },
       "large": {
-        "minWidthPx": 1440,
+        "minWidthPx": 1200,
         "maxWidthPx": null,
         "columnCount": 24,
         "columnToGutterRatio": 1.6,
