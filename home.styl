@@ -29,6 +29,9 @@ body
 .home-project-image
   transition top $defaultTiming $mediumShort, transform $defaultTiming $mediumShort, opacity $defaultTiming $medium
 
+.home-project.home-project-selected .home-project-caption
+  transition-delay $short
+
 .home-project-image
   background-position-x 50%
   background-position-y 50%
@@ -78,12 +81,12 @@ for $breakpointName, $breakpoint in $breakpoints
           .home-project-image
             top 5rem
           .home-project-button
-            right 3rem
-            transition right $defaultTiming $shorter, opacity $defaultTiming $medium
+            transform rotate(90deg) translateY(3rem)
+            transition transform $defaultTiming $shorter, opacity $defaultTiming $medium
         &:not(.home-project-collapsed) .home-project-button
-          transition right $defaultTiming $medium $mediumShort, opacity $defaultTiming $medium
+          transition transform $defaultTiming $medium $mediumShort, opacity $defaultTiming $medium
         &:hover:not(.home-project-selected) .home-project-image
-          top 0.1rem
+          top 0
           transition-duration $shorter
           transition-timing-function ease-out
       .home-project-image
@@ -114,7 +117,7 @@ for $breakpointName, $breakpoint in $breakpoints
         right 0
         width 5rem
         height 5rem
-        transform rotate(90deg)
+        transform rotate(90deg) translateY(0)
         svg
           position absolute
           right 1.5rem
