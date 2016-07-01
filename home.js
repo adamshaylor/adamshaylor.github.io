@@ -44,7 +44,7 @@ $(function() {
 
   });
 
-  $('body').on('click', 'a.home-project-link, a.home-project-button', function(event) {
+  $('body').on('click touchend', 'a.home-project-link, a.home-project-button', function(event) {
 
     event.preventDefault();
 
