@@ -63,8 +63,6 @@ for $breakpointName, $breakpoint in $breakpoints
     .home-explanatory
       margin-left columnsAndGutters($breakpoint, 1, 2)
     if $breakpointName is 'large' or $breakpointName is 'medium'
-      .page-home .scrollable
-        padding-bottom 8rem
       .home-header-greeting
         margin-left -0.06em
       .home-header-intro
@@ -130,6 +128,8 @@ for $breakpointName, $breakpoint in $breakpoints
       .home-explanatory
         margin-bottom 2.75rem
     if $breakpointName is 'large'
+      .page-home .scrollable
+        padding-bottom 6rem
       .home-header
         width columnsAndGutters($breakpoint, 11, 10)
         margin-top 5.25rem
@@ -164,6 +164,8 @@ for $breakpointName, $breakpoint in $breakpoints
         &.home-project-button-indicate svg:nth-child(2)
           top 0.7rem
     if $breakpointName is 'medium'
+      .page-home .scrollable
+        padding-bottom 4.5rem
       .home-header
         width columnsAndGutters($breakpoint, 6, 5)
         margin-top 4.25rem
