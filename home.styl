@@ -68,9 +68,10 @@ for $breakpointName, $breakpoint in $breakpoints
       .home-header-intro
         margin-top 0.7rem
         font-size scaleType($breakpoint, 1)
+      $gridWidth = gridWidth($breakpoint)
       .home-projects
         top 17.3rem
-        right columnsAndGutters($breakpoint, 1, 2)
+        right 'calc((100vw - %s) / 2 + %s)' % ($gridWidth columnsAndGutters($breakpoint, 1, 2))
         h2 + figure
           margin-top 1.6rem
       .home-project
@@ -165,7 +166,7 @@ for $breakpointName, $breakpoint in $breakpoints
           top 0.7rem
     if $breakpointName is 'medium'
       .page-home .scrollable
-        padding-bottom 4.5rem
+        padding-bottom 6.5rem
       .home-header
         width columnsAndGutters($breakpoint, 6, 5)
         margin-top 4.25rem
