@@ -55,6 +55,10 @@ h1
 body
   overflow hidden
   -webkit-font-smoothing subpixel-antialiased
+  &.transitioning
+    .scrollable,
+    .page
+      overflow-y hidden !important
   @media print
     overflow-y visible
 

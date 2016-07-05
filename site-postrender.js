@@ -60,6 +60,8 @@ $(function sitePostrender() {
 
   function smoothStateOnReadyRenderer($container, $newPage) {
 
+    $('body').addClass('transitioning');
+
     var newPageName = getPageNameFromElement($newPage);
     var oldPageName = $container.attr('data-current-page');
     var $oldPage = $('.page-' + oldPageName);
@@ -130,6 +132,8 @@ $(function sitePostrender() {
   }
 
   function smoothStateOnAfter($container, $newPage) {
+
+    $('body').removeClass('transitioning');
 
     var newPageName = getPageNameFromElement($newPage);
     var oldPageName = $container.attr('data-current-page');
