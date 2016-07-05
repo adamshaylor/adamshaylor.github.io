@@ -107,40 +107,11 @@ $(function sitePostrender() {
       transform: 'translateX(' + oldPageDestination + ')'
     });
 
-    // var $homeProjects = $('.home-projects');
-
-    // TODO: Fix this to stop the project accordion from jumping vertically
-    // during page transitions
-
-    // var newHomeProjectsTop =
-    //   $('.page-home').scrollTop() +
-    //   $homeProjects.position().top +
-    //   'px';
-    //
-    // if (newPageName !== 'home') {
-    //   if (oldPageName === 'home') {
-    //     $homeProjects.css('top', newHomeProjectsTop);
-    //   }
-    //   $('body').removeClass('fixed-home-projects');
-    // }
-
     var newPageAnimation = TweenLite.to($newPage, pageTransitionDurationS, {
       transform: 'translateX(0)'
     });
 
     newPageAnimation.eventCallback('onComplete', function() {
-
-      // Restore coordinate system for fixed position elements
-      $newPage.css('transform', '');
-
-      // Work around a Chrome bug wherein translated elements within a fixed
-      // element are rendered incorrectly
-      if (newPageName === 'home') {
-        $('body').addClass('fixed-home-projects');
-        // TODO: see above re: jumping
-        // // Restore stylesheet's value
-        // $homeProjects.css('top', '');
-      }
 
       // TweenLite converts the responsive viewport units passed to it into
       // unitless transform matrices
@@ -167,6 +138,7 @@ $(function sitePostrender() {
     $container
       .find('.page')
       .not($newPage)
+      .find('.scrollable')
       .scrollTop(0);
 
     // Transition colors

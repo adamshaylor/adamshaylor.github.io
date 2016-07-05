@@ -3,16 +3,18 @@
 body
   &.home-projects-prefetched .home-project
     background-color rgba(255, 255, 255, 0)
-  &.fixed-home-projects
-    .home-projects
-      pointer-events none
-    .home-project-button,
-    .home-project-heading
-      pointer-events all
-      cursor pointer
 
 .home-quote
   font-weight bold
+
+.home-projects
+  position absolute
+  pointer-events none
+
+.home-project-button,
+.home-project-heading
+  pointer-events all
+  cursor pointer
 
 .home-project
   position relative
@@ -61,13 +63,15 @@ for $breakpointName, $breakpoint in $breakpoints
     .home-explanatory
       margin-left columnsAndGutters($breakpoint, 1, 2)
     if $breakpointName is 'large' or $breakpointName is 'medium'
+      .page-home .scrollable
+        padding-bottom 8rem
       .home-header-greeting
         margin-left -0.06em
       .home-header-intro
         margin-top 0.7rem
         font-size scaleType($breakpoint, 1)
       .home-projects
-        position absolute
+        top 17.3rem
         right columnsAndGutters($breakpoint, 1, 2)
         h2 + figure
           margin-top 1.6rem
@@ -125,14 +129,7 @@ for $breakpointName, $breakpoint in $breakpoints
           transition top $short $defaultTiming
       .home-explanatory
         margin-bottom 2.75rem
-      $gridWidth = gridWidth($breakpoint)
-      body.fixed-home-projects .home-projects
-        position fixed
-        top 17.3rem
-        right 'calc((100vw - %s) / 2 + %s)' % ($gridWidth columnsAndGutters($breakpoint, 1, 2))
     if $breakpointName is 'large'
-      .page-home
-        padding-bottom 8rem
       .home-header
         width columnsAndGutters($breakpoint, 11, 10)
         margin-top 5.25rem
@@ -147,7 +144,6 @@ for $breakpointName, $breakpoint in $breakpoints
         &:last-child
           margin-left columnsAndGutters($breakpoint, 1, 2)
       .home-projects
-        top 12.1rem
         width columnsAndGutters($breakpoint, 10, 9)
       .home-project
         width columnsAndGutters($breakpoint, 10, 10)
@@ -168,8 +164,6 @@ for $breakpointName, $breakpoint in $breakpoints
         &.home-project-button-indicate svg:nth-child(2)
           top 0.7rem
     if $breakpointName is 'medium'
-      .page-home
-        padding-bottom 8rem
       .home-header
         width columnsAndGutters($breakpoint, 6, 5)
         margin-top 4.25rem
@@ -180,7 +174,6 @@ for $breakpointName, $breakpoint in $breakpoints
         width 100%
         margin-top 2.75rem
       .home-projects
-        top 13.1rem
         width columnsAndGutters($breakpoint, 8, 7)
       .home-project
         width columnsAndGutters($breakpoint, 8, 8)
@@ -201,13 +194,14 @@ for $breakpointName, $breakpoint in $breakpoints
         &.home-project-button-indicate svg:nth-child(2)
           top 0.9rem
     if $breakpointName is 'small'
+      .page-home
+        overflow-y auto
+        .scrollable
+          overflow-y visible
       .home-header,
       .home-explanatory
         width columnsAndGutters($breakpoint, 10, 9)
-      .home-project,
-      .home-project-image
-        width 100%
-        height 100%
+        margin-top 40rem
       .home-header
         margin-top 9.8rem
         font-size scaleType($breakpoint, 4)
@@ -224,7 +218,7 @@ for $breakpointName, $breakpoint in $breakpoints
       .home-header-intro-sentence
         display block
       .home-explanatory
-        margin-top 6.5rem
+        margin-top 181.5rem
       .home-explanatory-column
         margin-top 6rem
       .home-recommendation
@@ -234,10 +228,13 @@ for $breakpointName, $breakpoint in $breakpoints
       .home-recommendation-quote
         text-indent 0
       .home-projects
-        margin-top 16.5rem
-        padding-top 4rem
         width 100%
+        top 84rem
         overflow hidden
+      .home-project,
+      .home-project-image
+        width 100%
+        height 100%
       .home-project
         width 100%
         height 33rem !important
