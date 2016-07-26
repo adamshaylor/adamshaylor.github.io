@@ -28,7 +28,7 @@ $(function() {
 
   });
 
-  $('body').on('click', '.home-project:not(.home-project-selected)', function() {
+  $('body').on('click touchend', '.home-project:not(.home-project-selected)', function() {
 
     var $clickedProject = $(this);
     var $otherProjects = $('.home-project').not($clickedProject);
