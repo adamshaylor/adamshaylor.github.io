@@ -22,13 +22,13 @@ $(function() {
 
   }
 
-  $('body').on('shaylor-prefetched', function() {
+  function handlePrefetch() {
 
     $('body').addClass('home-projects-prefetched');
 
-  });
+  }
 
-  $('body').on('click touchend', '.home-project:not(.home-project-selected)', function() {
+  function handleUnselectedProjectPress() {
 
     var $clickedProject = $(this);
     var $otherProjects = $('.home-project').not($clickedProject);
@@ -42,9 +42,11 @@ $(function() {
       expand($selectedProject);
     }, durations.medium);
 
-  });
+    return false;
 
-  $('body').on('click touchend', 'a.home-project-link, a.home-project-button', function(event) {
+  }
+
+  function handleProjectLinkPress(event) {
 
     event.preventDefault();
 
@@ -55,25 +57,30 @@ $(function() {
 
     if (projectIsSelected || breakpointIsSmall) {
       smoothState.load($link.attr('href'));
-      return;
     }
 
-  });
+  }
 
-  $('body').on('mouseenter', '.home-project-selected .home-project-link, .home-project-selected .home-project-button', function() {
+  function handleProjectButtonMouseEnter() {
 
     var $project = $(this).parents('.home-project');
-    // TODO: use pure JS animation and use TimelineLite to make it a bit more interesting
     $project.find('.home-project-button').addClass('home-project-button-indicate');
 
-  });
+  }
 
-  $('body').on('mouseleave', '.home-project-selected .home-project-link, .home-project-selected .home-project-button', function() {
+  function handleProjectButtonMouseLeave() {
 
     var $project = $(this).parents('.home-project');
     // TODO: use pure JS animation and use TimelineLite to make it a bit more interesting
     $project.find('.home-project-button').removeClass('home-project-button-indicate');
 
-  });
+  }
+
+  $('body')
+    .on('shaylor-prefetched', handlePrefetch)
+    .on('click touchend', '.home-project:not(.home-project-selected)', handleUnselectedProjectPress)
+    .on('click touchend', 'a.home-project-link, a.home-project-button', handleProjectLinkPress)
+    .on('mouseenter', '.home-project-selected .home-project-link, .home-project-selected .home-project-button', handleProjectButtonMouseEnter)
+    .on('mouseleave', '.home-project-selected .home-project-link, .home-project-selected .home-project-button', handleProjectButtonMouseLeave);
 
 });
