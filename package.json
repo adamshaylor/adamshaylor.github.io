@@ -5,8 +5,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "concurrently 'npm:serve' 'npm:prettier-watch'",
-    "serve": "parcel serve --out-dir docs src/index.pug",
-    "build": "rm -rf docs && parcel build --out-dir docs src/index.pug",
+    "serve": "parcel serve --out-dir temp src/index.pug",
+    "build": "rm src.* icon.* *.woff; parcel build --out-dir . src/index.pug",
     "prettier-watch": "onchange 'src/**/*.js' -- prettier --write {{changed}}"
   },
   "repository": {
