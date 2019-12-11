@@ -1,0 +1,80 @@
+.layout
+  --desktopGridSquareSize: desktop.minGridSquareSize
+  display: grid
+  box-sizing: border-box
+  height: 100%
+  grid-template-rows: mobile.verticalMargin 1fr mobile.verticalMargin approximateScrollbarThickness
+  grid-template-columns: 0 repeat(sectionCount * mobile.columnsPerSection, mobile.columnWidth) 0
+  column-gap: mobile.columnGap
+  font-family: 'IBM Plex Sans'
+  font-weight: 300
+  font-size: multiplyByGridSquare(2)
+  font-kerning: normal
+  text-rendering: optimizeLegibility
+  overflow: scroll
+  scroll-snap-type: x mandatory
+
+  @media (min-width: desktop.breakpoint)
+    height: auto
+    grid-template-rows: repeat(desktop.gridVerticalCount, var(--desktopGridSquareSize))
+    grid-template-columns: repeat(desktop.gridHorizontalCount, var(--desktopGridSquareSize))
+    column-gap: 0
+    overflow: hidden
+    scroll-snap-type: none
+
+  @media (min-width: (desktop.maxGridSquareSize * desktop.gridHorizontalCount))
+    --desktopGridSquareSize: desktop.maxGridSquareSize
+
+  section
+    scroll-snap-align: start
+    overflow: hidden
+
+    .card
+      display: grid
+      box-sizing: border-box
+      width: (mobile.columnsPerSection * mobile.columnWidth) + ((mobile.columnsPerSection - 1) * mobile.columnGap)
+      height: 100%
+      border-width: 1px
+      border-style: solid
+      border-top-color: lighten(lightPalette.mediumGray, 8%)
+      border-right-color: saturate(darken(lightPalette.mediumGray, 5%), 100%)
+      border-bottom-color: darken(lightPalette.mediumGray, 30%)
+      border-left-color: saturate(darken(lightPalette.mediumGray, 5%), 100%)
+      background: linear-gradient(to bottom, lighten(lightPalette.mediumGray, 3%), darken(lightPalette.mediumGray, 3%))
+      grid-template-columns: repeat(mobile.columnsPerSection, mobile.columnWidth)
+      grid-template-rows: repeat(mobile.rowsPerSection, mobile.rowHeight)
+      column-gap: mobile.columnGap
+      overflow: hidden
+
+      @media (prefers-color-scheme: dark)
+        background: linear-gradient(to bottom, lighten(darkPalette.darkGray, 3%), darken(darkPalette.darkGray, 3%))
+        border-top-color: lighten(darkPalette.darkGray, 8%)
+        border-right-color: saturate(darken(darkPalette.darkGray, 5%), 100%)
+        border-bottom-color: darken(darkPalette.darkGray, 30%)
+        border-left-color: saturate(darken(darkPalette.darkGray, 5%), 100%)
+
+      @media (min-width: desktop.breakpoint)
+        display: block
+        width: auto
+        height: auto
+        border: none
+        background: none
+
+      & > *
+        overflow: hidden
+
+  .robin-once-removed
+    grid-area: 2 / 10 / 3 / 15
+    align-self: end
+    margin-bottom: 6vh
+    font-style: italic
+    text-align: right
+
+    @media (min-width: desktop.breakpoint)
+      grid-area: 15 / 34 / 19 / 38
+      align-self: auto
+      margin: 0
+      font-size: multiplyByGridSquare(0.4)
+      line-height: multiplyByGridSquare(1)
+      text-align: left
+

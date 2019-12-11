@@ -1,0 +1,41 @@
+{
+  "name": "adamshaylor.github.io",
+  "version": "1.0.0",
+  "description": "Adam Shaylor",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "concurrently 'npm:serve' 'npm:prettier-watch'",
+    "serve": "parcel serve --out-dir docs src/index.pug",
+    "build": "rm -rf docs && parcel build --out-dir docs src/index.pug",
+    "prettier-watch": "onchange 'src/**/*.js' -- prettier --write {{changed}}"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adamshaylor/adamshaylor.github.io.git"
+  },
+  "author": "Adam Shaylor <business@adamshaylor.com>",
+  "private": true,
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/adamshaylor/adamshaylor.github.io/issues"
+  },
+  "homepage": "https://github.com/adamshaylor/adamshaylor.github.io",
+  "engines": {
+    "node": "^13.1.0",
+    "npm": "^6.12.1"
+  },
+  "devDependencies": {
+    "concurrently": "^5.0.0",
+    "glslify-bundle": "^5.1.1",
+    "glslify-deps": "^1.3.1",
+    "onchange": "^6.1.0",
+    "parcel-bundler": "^1.12.4",
+    "prettier": "^1.19.1",
+    "pug": "^2.0.4",
+    "stylus": "^0.54.7"
+  },
+  "dependencies": {
+    "eases-jsnext": "^1.0.10",
+    "js-easing-functions": "^1.0.3"
+  }
+}

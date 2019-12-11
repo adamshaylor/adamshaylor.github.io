@@ -1,0 +1,7 @@
+mixin elsewhereItem(item)
+  li.elsewhere-item
+    include elsewhereItemEffects/elsewhereItemEffects.pug
+    a.elsewhere-item__link(href=item.url)
+      span.elsewhere-item__domain= item.domain
+      span.elsewhere-item__tld= '.' + item.tld
+      span.elsewhere-item__path= item.path

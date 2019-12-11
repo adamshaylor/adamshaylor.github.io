@@ -1,0 +1,29 @@
+.elsewhere
+  grid-area: 2 / 9 / 3 / 17
+  height: 100%
+
+  @media (min-width: desktop.breakpoint)
+    grid-area: 2 / 3 / 22 / 16
+
+  .card
+    margin-right: auto
+
+    @media (min-width: desktop.breakpoint)
+      margin: 0
+
+  &__list
+    grid-area: 2 / 2 / 19 / 7
+    height: 100%
+    margin: 0
+    padding: 0
+    list-style: none
+    text-align: right
+    line-height: 2.5em
+
+    @media (min-width: desktop.breakpoint)
+      display: flex
+      flex-wrap: wrap
+      justify-content: space-between
+      align-content: space-between
+      font-size: multiplyByGridSquare(0.5)
+      line-height: 1.7em

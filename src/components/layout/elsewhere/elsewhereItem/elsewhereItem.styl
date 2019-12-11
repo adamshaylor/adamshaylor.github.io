@@ -1,0 +1,33 @@
+.elsewhere-item
+  @media (min-width: desktop.breakpoint)
+    display: block
+    position: relative
+    width: multiplyByGridSquare(6)
+    height: multiplyByGridSquare(6)
+
+  &__link
+    @media (min-width: desktop.breakpoint)
+      display: block
+      box-sizing: border-box
+      width: 100%;
+      height: 100%;
+      padding: multiplyByGridSquare(1)
+
+      &:hover
+        color: lightPalette.white
+
+        @media (prefers-color-scheme: dark)
+          color: darkPalette.black
+
+      &:active
+        background-color: lightPalette.mediumGray
+
+        @media (prefers-color-scheme: dark)
+          background-color: darkPalette.lightGray
+
+  &__path
+    @media (min-width: desktop.breakpoint)
+      display: block
+
+  &__domain
+    font-weight: 700

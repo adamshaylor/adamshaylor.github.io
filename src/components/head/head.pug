@@ -1,0 +1,22 @@
+- const title = 'Adam Shaylor';
+- const description = 'Portland, Oregon';
+- const iconUrl = 'assets/images/icon.svg';
+
+head
+  title= title
+  meta(name='description' content=description)
+  meta(itemprop='name' content=title)
+  meta(itemprop='description' content=description)
+  meta(itemprop='image' content=iconUrl)
+  meta(name='twitter:card' content='summary')
+  meta(name='twitter:title' content=title)
+  meta(name='twitter:description' content=description)
+  meta(name='twitter:site' content='@adamshaylor')
+  meta(name='og:title' content=title)
+  meta(name='og:description' content=description)
+  meta(name='og:type' content='website')
+  meta(name='viewport' content='width=device-width, initial-scale=1')
+  link(rel='icon' type='image/svg+xml' href=iconUrl)
+  link(rel='stylesheet' href='index.styl')
+  //- 300 = light, 500 = medium, 600 = semibold, 700 = bold
+  link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,300i,500,600,700&display=swap&subset=greek')

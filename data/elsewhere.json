@@ -1,0 +1,32 @@
+[
+  {
+    "url": "https://github.com/adamshaylor",
+    "domain": "github",
+    "tld": "com",
+    "path": "/adamshaylor"
+  },
+  {
+    "url": "https://codepen.io/shaylor",
+    "domain": "codepen",
+    "tld": "io",
+    "path": "/shaylor"
+  },
+  {
+    "url": "https://pinboard.in/u:shaylor",
+    "domain": "pinboard",
+    "tld": "in",
+    "path": "/u:shaylor"
+  },
+  {
+    "url": "https://pinterest.com/adamshaylor",
+    "domain": "pinterest",
+    "tld": "com",
+    "path": "/adamshaylor"
+  },
+  {
+    "url": "https://linkedin.com/in/shaylor",
+    "domain": "linkedin",
+    "tld": "com",
+    "path": "/in/shaylor"
+  }
+]

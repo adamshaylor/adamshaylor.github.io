@@ -1,0 +1,82 @@
+.who-where
+  grid-area: 2 / 1 / 3 / 9
+  height: 100%
+
+  @media (min-width: desktop.breakpoint)
+    grid-area: 4 / 20 / 19 / 44
+
+  .card
+    margin-left: auto
+
+    @media (min-width: desktop.breakpoint)
+      display: flex
+
+  &__name
+    grid-area: 2 / 1 / 18 / 8
+    display: flex
+    flex-direction: column
+    justify-content: flex-end
+    margin: 0
+    padding-left: 0.34em
+    color: lightPalette.white
+    font-family: 'Grifo M Medium'
+    font-size: 16vh
+    font-weight: normal
+    line-height: 0.9em
+    letter-spacing: -0.025em
+    writing-mode: vertical-rl
+    transform: rotate(180deg)
+
+    @media (prefers-color-scheme: dark)
+      color: darkPalette.black
+
+    @media (min-width: desktop.breakpoint)
+      margin-bottom: multiplyByGridSquare(1.8)
+      padding-left: 0
+      writing-mode: unset
+      color: lightPalette.darkGray
+      font-size: multiplyByGridSquare(2.3)
+      letter-spacing: multiplyByGridSquare(2.35)
+      line-height: multiplyByGridSquare(4.6)
+      text-transform: uppercase
+      transform: none
+
+      @media (prefers-color-scheme: dark)
+        color: darkPalette.lightGray
+
+  &__first,
+  &__last
+    display: block
+
+  &__title,
+  &__location
+    font-size: 3.5vmin
+    font-weight: 500
+    text-transform: uppercase
+    text-align: right
+    letter-spacing: 1.25vw
+
+    @media (min-width: desktop.breakpoint)
+      display: inline-block
+      width: multiplyByGridSquare(4)
+      height: multiplyByGridSquare(4)
+      font-size: multiplyByGridSquare(0.4)
+      letter-spacing: multiplyByGridSquare(0.2)
+      line-height: multiplyByGridSquare(1)
+      text-align: left
+
+    @media (prefers-color-scheme: dark)
+      font-weight: 600
+
+  &__title
+    grid-area: 20 / 2 / 21 / 7
+
+  &__location
+    grid-area: 21 / 2 / 22 / 7
+
+    @media (min-width: desktop.breakpoint)
+      margin-left: multiplyByGridSquare(3)
+
+  &__comma
+    @media (min-width: desktop.breakpoint)
+      display: none

@@ -1,0 +1,38 @@
+/**
+ * Keep in sync with geometry.js
+ */
+
+sectionCount = 2
+
+mobile = {
+  columnsPerSection: 7
+  columnWidth: 10vw
+  columnGap: 2.5vw
+  rowsPerSection: 22
+  rowHeight: 1fr
+  verticalMargin: 2.5vh
+}
+
+mobile.layoutWidth = (mobile.columnWidth + mobile.columnGap) * mobile.columnsPerSection * sectionCount + mobile.columnGap
+
+desktop = {
+  breakpoint: 1024px
+  gridHorizontalCount: 46
+  gridVerticalCount: 23
+  minGridSquareSize: 100vw / 46vw
+  maxGridSquareSize: 30px
+}
+
+multiplyByGridSquare(n)
+  'calc(var(--desktopGridSquareSize) * %s)' % n
+
+// We could go crazy and use this method of measuring the scrollbar
+// dynamically:
+//
+// https://davidwalsh.name/detect-scrollbar-width
+//
+// However, that would have an impact on performance. For my purpose,
+// an approximation of the amount of space we need to leave for
+// scrollbars that overlap their content is sufficient.
+
+approximateScrollbarThickness = 16px

@@ -1,0 +1,7 @@
+include elsewhereItem/elsewhereItem.pug
+
+section.elsewhere
+  .card
+    ul.elsewhere__list
+      each item in elsewhere
+        +elsewhereItem(item)

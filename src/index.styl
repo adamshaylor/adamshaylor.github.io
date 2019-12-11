@@ -1,0 +1,48 @@
+@require 'lib/**/*.styl'
+@require 'components/**/*.styl'
+
+@font-face
+  font-family: 'Grifo M Medium'
+  src: url('assets/fonts/grifo-m-medium.woff') format('woff')
+
+html, body
+  margin: 0
+
+body
+  height: 100%
+  background-color: lightPalette.lightGray
+  color: lightPalette.darkGray
+
+  @media (min-width: desktop.breakpoint)
+    display: flex
+    flex-direction: column
+    align-items: center
+    height: auto
+    font-size: 1.2vw
+
+  @media (prefers-color-scheme: dark)
+    background-color: darkPalette.charcoal
+    color: darkPalette.lightGray
+
+  @media (min-width: desktop.breakpoint) and (prefers-color-scheme: dark)
+    background-color darkPalette.darkGray
+
+  ::selection
+    background-color: transparentify(lightPalette.blue, lightPalette.blue, 50%)
+
+    @media (prefers-color-scheme: dark)
+      background-color: transparentify(darkPalette.orange, darkPalette.orange, 50%)
+
+a
+  color: lightPalette.darkGray
+  text-decoration: none
+
+  @media (prefers-color-scheme: dark)
+    color: darkPalette.lightGray
+
+  &:hover,
+  &:active
+    color: lightPalette.blue
+
+    @media (prefers-color-scheme: dark)
+      color: darkPalette.orange
