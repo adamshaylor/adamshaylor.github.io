@@ -21,8 +21,8 @@
   },
   "homepage": "https://github.com/adamshaylor/adamshaylor.github.io",
   "engines": {
-    "node": "^13.1.0",
-    "npm": "^6.12.1"
+    "node": "^18.12.1",
+    "npm": "^8.19.2"
   },
   "devDependencies": {
     "concurrently": "^5.0.0",
@@ -35,7 +35,6 @@
     "stylus": "^0.54.7"
   },
   "dependencies": {
-    "eases-jsnext": "^1.0.10",
-    "js-easing-functions": "^1.0.3"
+    "eases-jsnext": "^1.0.10"
   }
 }
