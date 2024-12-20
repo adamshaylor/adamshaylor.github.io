@@ -5,7 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "concurrently 'npm:serve' 'npm:prettier-watch'",
-    "serve": "parcel serve --out-dir temp src/index.pug",
+    "serve": "parcel serve --no-cache --out-dir temp src/index.pug",
     "build": "rm src.* icon.* *.woff; parcel build --out-dir . src/index.pug",
     "prettier-watch": "onchange 'src/**/*.js' -- prettier --write {{changed}}"
   },
@@ -22,7 +22,7 @@
   "homepage": "https://github.com/adamshaylor/adamshaylor.github.io",
   "engines": {
     "node": "^18.12.1",
-    "npm": "^8.19.2"
+    "npm": "^10.8.2"
   },
   "devDependencies": {
     "concurrently": "^5.0.0",

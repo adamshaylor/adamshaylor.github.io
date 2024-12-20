@@ -7,6 +7,6 @@ parcelRequire=function(e,r,t,n){var i,o="function"==typeof parcelRequire&&parcel
 },{"eases-jsnext":"Bw1N","~/lib/geometry.js":"crI6"}],"hvQA":[function(require,module,exports) {
 module.exports={components:{layout:{elsewhere:{elsewhereItem:{elsewhereItemEffects:{elsewhereItemEffects:require("./../components/layout/elsewhere/elsewhereItem/elsewhereItemEffects/elsewhereItemEffects.component.js")}}}}}};
 },{"./../components/layout/elsewhere/elsewhereItem/elsewhereItemEffects/elsewhereItemEffects.component.js":"Pj2q"}],"Focm":[function(require,module,exports) {
-"use strict";function a(){dataLayer.push(arguments)}require("./**/*.component.js"),window.dataLayer=window.dataLayer||[],a("js",new Date),a("config","UA-63102701-1");
+"use strict";require("./**/*.component.js");
 },{"./**/*.component.js":"hvQA"}]},{},["Focm"], null)
-//# sourceMappingURL=/src.b4a90cf1.js.map
+//# sourceMappingURL=/src.e6662487.js.map

@@ -6,6 +6,12 @@
     "path": "/adamshaylor"
   },
   {
+    "url": "https://lobste.rs/~adamshaylor",
+    "domain": "lobste",
+    "tld": "rs",
+    "path": "/~adamshaylor"
+  },
+  {
     "url": "https://codepen.io/shaylor",
     "domain": "codepen",
     "tld": "io",
